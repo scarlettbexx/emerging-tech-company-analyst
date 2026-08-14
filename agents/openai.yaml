@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emerging Tech Company Analyst"
+  short_description: "Research and design concise visual company briefs"
+  default_prompt: "Use $emerging-tech-company-analyst to research an emerging tech company and create a polished single-file visual brief."
