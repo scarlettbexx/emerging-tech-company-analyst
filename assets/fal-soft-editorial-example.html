@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="fal.ai Emerging Tech Company Analyst visual brief — developer-first generative media infrastructure.">
+  <title>fal.ai — Emerging Tech Company Analyst</title>
+  <style>
+    :root {
+      --paper: #f3eee4;
+      --paper-deep: #e7dfd0;
+      --ink: #1d211d;
+      --muted: #686a60;
+      --line: rgba(29, 33, 29, .17);
+      --green: #173f34;
+      --green-soft: #d9e3d9;
+      --sage: #9eb19e;
+      --red: #9f3f32;
+      --red-soft: #ead5cf;
+      --cream: #faf6ed;
+      --shadow: 0 24px 70px rgba(43, 39, 30, .10);
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --serif: Iowan Old Style, Baskerville, "Times New Roman", "Songti SC", "STSong", serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 12%, rgba(255,255,255,.72), transparent 24rem),
+        linear-gradient(rgba(40,42,34,.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, 100% 32px, auto;
+      font-family: var(--sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+    ::selection { color: var(--cream); background: var(--green); }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 22px auto 64px;
+      border: 1px solid var(--line);
+      background: rgba(250, 246, 237, .82);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .masthead span:last-child { color: var(--muted); }
+
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      align-content: space-between;
+      padding: clamp(48px, 8vw, 104px) clamp(28px, 7vw, 86px) 52px;
+      background:
+        linear-gradient(120deg, transparent 0 68%, rgba(23,63,52,.08) 68% 100%),
+        var(--cream);
+    }
+    .hero::after {
+      content: "fal";
+      position: absolute;
+      right: -18px;
+      bottom: -100px;
+      z-index: 0;
+      color: rgba(23, 63, 52, .055);
+      font: 900 clamp(180px, 31vw, 390px)/1 var(--sans);
+      letter-spacing: -.11em;
+      pointer-events: none;
+    }
+    .hero-copy, .hero-meta { position: relative; z-index: 1; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 30px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 2px; background: currentColor; }
+    h1 {
+      margin: 0;
+      font: 700 clamp(84px, 15vw, 184px)/.82 var(--serif);
+      letter-spacing: -.07em;
+    }
+    .hero h2 {
+      max-width: 900px;
+      margin: 40px 0 18px;
+      font: 500 clamp(28px, 4.6vw, 58px)/1.04 var(--serif);
+      letter-spacing: -.035em;
+    }
+    .hero h2 em { color: var(--green); font-style: italic; }
+    .dek {
+      max-width: 690px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.75vw, 21px);
+    }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      gap: 1px;
+      margin-top: 64px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .meta-card { min-height: 138px; padding: 22px; background: rgba(250,246,237,.96); }
+    .meta-card.primary { color: var(--cream); background: var(--green); }
+    .meta-label {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .primary .meta-label { color: rgba(250,246,237,.66); }
+    .meta-value { display: block; font: 600 clamp(23px, 3vw, 38px)/1.05 var(--serif); }
+    .meta-note { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .primary .meta-note { color: rgba(250,246,237,.73); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .tag {
+      padding: 7px 11px 6px;
+      border: 1px solid rgba(23,63,52,.24);
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(217,227,217,.58);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .035em;
+    }
+
+    .section {
+      padding: clamp(64px, 9vw, 108px) clamp(28px, 7vw, 86px);
+      border-top: 1px solid var(--line);
+    }
+    .section.dark { color: var(--cream); background: var(--green); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 26px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
+    .section-no {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .dark .section-no { color: #e49c8d; }
+    .section h3 {
+      max-width: 820px;
+      margin: -8px 0 0;
+      font: 560 clamp(38px, 6vw, 72px)/1.02 var(--serif);
+      letter-spacing: -.04em;
+    }
+    .section-intro {
+      max-width: 690px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .dark .section-intro { color: rgba(250,246,237,.68); }
+
+    .stack {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border: 1px solid var(--line);
+      background: var(--line);
+      gap: 1px;
+    }
+    .stack-label, .stack-layer { background: var(--cream); }
+    .stack-label {
+      display: grid;
+      place-items: center;
+      padding: 18px 10px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .stack-layer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      min-height: 98px;
+      padding: 20px 24px;
+    }
+    .node {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #f6f0e5;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .node.strong {
+      position: relative;
+      padding: 18px 26px;
+      border-color: var(--green);
+      color: var(--cream);
+      background: var(--green);
+      font: 650 24px/1 var(--serif);
+      box-shadow: 7px 7px 0 var(--sage);
+    }
+    .node.strong::after {
+      content: "YOU ARE HERE";
+      position: absolute;
+      top: -18px;
+      left: 0;
+      color: var(--red);
+      font: 800 9px/1 var(--sans);
+      letter-spacing: .12em;
+    }
+    .layer-copy { margin-left: auto; max-width: 285px; color: var(--muted); font-size: 12px; text-align: right; }
+    .map-caption {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 24px;
+      font-size: 13px;
+    }
+    .map-caption strong { color: var(--green); }
+    .map-caption p { margin: 0; }
+    .map-caption .fine { color: var(--muted); }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.95fr;
+      gap: 26px;
+    }
+    .audience-hero {
+      display: flex;
+      min-height: 450px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 34px;
+      color: var(--cream);
+      background: var(--red);
+    }
+    .audience-hero .tiny { font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .audience-hero .big { font: 600 clamp(48px, 7vw, 86px)/.92 var(--serif); letter-spacing: -.05em; }
+    .audience-hero p { max-width: 300px; margin: 0; color: rgba(250,246,237,.8); font-size: 14px; }
+    .business {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .business-card { padding: 26px; background: var(--cream); }
+    .business-card .index { color: var(--red); font: italic 24px/1 var(--serif); }
+    .business-card h4 { margin: 62px 0 12px; font: 600 23px/1.05 var(--serif); }
+    .business-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .business-card b { color: var(--ink); }
+    .business-note {
+      grid-column: 1 / -1;
+      padding: 22px 26px;
+      color: var(--muted);
+      background: var(--green-soft);
+      font-size: 13px;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      border: 1px solid rgba(250,246,237,.18);
+      background: rgba(250,246,237,.18);
+    }
+    .reason { min-height: 280px; padding: 34px; background: var(--green); }
+    .reason:nth-child(2), .reason:nth-child(3) { background: #204c40; }
+    .reason .glyph { display: block; margin-bottom: 62px; color: #e49c8d; font: italic 36px/1 var(--serif); }
+    .reason h4 { margin: 0 0 12px; font: 560 29px/1.05 var(--serif); }
+    .reason p { max-width: 440px; margin: 0; color: rgba(250,246,237,.68); font-size: 13px; }
+    sup a { color: var(--red); font-weight: 850; text-decoration: none; }
+    .dark sup a { color: #e49c8d; }
+
+    .perspective-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .perspective {
+      min-height: 430px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: var(--cream);
+    }
+    .perspective.concern { background: var(--red-soft); }
+    .perspective-kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .concern .perspective-kicker { color: var(--red); }
+    .perspective blockquote {
+      margin: 48px 0 42px;
+      font: 500 clamp(25px, 3vw, 37px)/1.18 var(--serif);
+      letter-spacing: -.025em;
+    }
+    .perspective ul { margin: 0; padding: 0; list-style: none; }
+    .perspective li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 13px; }
+    .perspective li::before { content: "↳"; color: var(--red); }
+    .source-note { margin: 24px 0 0; color: var(--muted); font-size: 11px; }
+
+    .remember-list { counter-reset: remember; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .remember {
+      counter-increment: remember;
+      min-height: 350px;
+      padding: 28px;
+      border-top: 4px solid var(--red);
+      background: var(--cream);
+    }
+    .remember::before {
+      content: "0" counter(remember);
+      display: block;
+      margin-bottom: 86px;
+      color: var(--red);
+      font: italic 28px/1 var(--serif);
+    }
+    .remember h4 { margin: 0 0 13px; font: 600 28px/1.06 var(--serif); }
+    .remember p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .explore {
+      display: grid;
+      grid-template-columns: 1fr 1.65fr;
+      gap: 60px;
+      padding: 70px clamp(28px, 7vw, 86px);
+      color: var(--cream);
+      background: #161a17;
+    }
+    .explore h3 { margin: 0; font: 560 clamp(38px, 5vw, 64px)/1 var(--serif); letter-spacing: -.04em; }
+    .explore-links { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(250,246,237,.24); }
+    .explore-links a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 12px 18px 0;
+      border-bottom: 1px solid rgba(250,246,237,.24);
+      color: rgba(250,246,237,.78);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .explore-links a:nth-child(odd) { margin-right: 20px; }
+    .explore-links a:hover { color: #fff; }
+    .explore-links a span:last-child { color: #e49c8d; }
+
+    .sources {
+      padding: 34px clamp(28px, 7vw, 86px) 42px;
+      border-top: 1px solid rgba(250,246,237,.15);
+      color: rgba(250,246,237,.52);
+      background: #161a17;
+      font-size: 10px;
+    }
+    .sources h4 { margin: 0 0 16px; color: rgba(250,246,237,.85); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .sources ol { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 34px; margin: 0; padding-left: 18px; }
+    .sources a { text-decoration-color: rgba(250,246,237,.28); text-underline-offset: 3px; }
+    .colophon { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(250,246,237,.15); text-transform: uppercase; letter-spacing: .08em; }
+
+    @media (max-width: 850px) {
+      .hero { min-height: auto; }
+      .hero-meta, .audience-grid, .explore { grid-template-columns: 1fr; }
+      .section-head { grid-template-columns: 1fr; gap: 12px; }
+      .section-no { margin-bottom: 8px; }
+      .business { grid-template-columns: 1fr; }
+      .business-card h4 { margin-top: 30px; }
+      .reasons, .perspective-grid, .remember-list { grid-template-columns: 1fr; }
+      .remember { min-height: 260px; }
+      .remember::before { margin-bottom: 48px; }
+      .sources ol { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .page { width: 100%; margin: 0; border-width: 0; }
+      .masthead { padding: 15px 18px; }
+      .masthead span:last-child { display: none; }
+      .hero { padding: 48px 20px 30px; }
+      .hero h2 { margin-top: 30px; }
+      .hero-meta { grid-template-columns: 1fr; margin-top: 44px; }
+      .section { padding: 62px 20px; }
+      .stack { grid-template-columns: 76px 1fr; }
+      .stack-layer { align-items: flex-start; padding: 28px 16px 18px; }
+      .layer-copy { width: 100%; margin-left: 0; text-align: left; }
+      .map-caption { grid-template-columns: 1fr; }
+      .audience-hero { min-height: 360px; }
+      .perspective { min-height: auto; padding: 24px; }
+      .perspective blockquote { margin: 36px 0; }
+      .explore { padding: 58px 20px; gap: 38px; }
+      .explore-links { grid-template-columns: 1fr; }
+      .explore-links a:nth-child(odd) { margin-right: 0; }
+      .sources { padding: 30px 20px; }
+      .colophon { flex-direction: column; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; margin: 0; border: 0; box-shadow: none; }
+      .hero, .section, .explore, .sources { break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <span>Emerging Tech Company Analyst</span>
+      <span>Visual Brief · 14 Aug 2026</span>
+    </header>
+
+    <section class="hero" aria-labelledby="company-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Company briefing / 01</p>
+        <h1 id="company-title">fal.ai</h1>
+        <h2><em>Developer-first</em> Generative Media Infrastructure</h2>
+        <p class="dek">把图像、视频、音频与 3D 生成模型，变成开发者可以快速接入、部署并扩展的生产级 Inference Platform。</p>
+        <div class="tags" aria-label="Industry tags">
+          <span class="tag">Generative AI Infrastructure</span>
+          <span class="tag">Inference Platform</span>
+          <span class="tag">Developer Tools</span>
+          <span class="tag">Model APIs</span>
+          <span class="tag">Serverless GPU</span>
+          <span class="tag">Generative Media</span>
+        </div>
+      </div>
+
+      <div class="hero-meta" aria-label="Company snapshot">
+        <article class="meta-card primary">
+          <span class="meta-label">Primary audience</span>
+          <span class="meta-value">Developers</span>
+          <span class="meta-note">以及构建 AI 产品的技术团队</span>
+        </article>
+        <article class="meta-card">
+          <span class="meta-label">Business model</span>
+          <span class="meta-value">Usage-based</span>
+          <span class="meta-note">按输出或算力计费 + Enterprise 合同<sup><a href="#s2">2</a></sup></span>
+        </article>
+        <article class="meta-card">
+          <span class="meta-label">Company stage</span>
+          <span class="meta-value">Series D</span>
+          <span class="meta-note">2025.12 融资 $140M；成熟扩张期私营公司<sup><a href="#s3">3</a></sup></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="position-title">
+      <div class="section-head">
+        <div class="section-no">02 / Where it fits</div>
+        <div>
+          <h3 id="position-title">它在模型与 AI 产品之间。</h3>
+          <p class="section-intro">fal 的核心位置不是最终应用，也不是单一 foundation model，而是把许多生成式媒体模型包装成统一、可扩展的推理与部署层。<sup><a href="#s1">1</a></sup></p>
+        </div>
+      </div>
+
+      <div class="stack" role="img" aria-label="Generative media industry stack with fal highlighted in the inference and model serving layer">
+        <div class="stack-label">AI<br>Applications</div>
+        <div class="stack-layer">
+          <span class="node">Canva</span><span class="node">Poe</span><span class="node">Perplexity</span><span class="node">AI-native products</span>
+          <span class="layer-copy">最终产品需要稳定、低延迟地生成图像、视频与音频。</span>
+        </div>
+
+        <div class="stack-label">Inference &amp;<br>Serving</div>
+        <div class="stack-layer">
+          <span class="node strong">fal.ai</span><span class="node">Replicate</span><span class="node">Together AI</span>
+          <span class="layer-copy">统一 API、模型部署、自动扩缩容、观测与 GPU 调度。</span>
+        </div>
+
+        <div class="stack-label">Models &amp;<br>Labs</div>
+        <div class="stack-layer">
+          <span class="node">Black Forest Labs</span><span class="node">Google</span><span class="node">OpenAI</span><span class="node">ByteDance</span>
+          <span class="layer-copy">模型供给快速变化；平台价值在于把变化吸收在统一接口之后。</span>
+        </div>
+
+        <div class="stack-label">Compute &amp;<br>Hardware</div>
+        <div class="stack-layer">
+          <span class="node">GPU Cloud</span><span class="node">NVIDIA GPUs</span><span class="node">Storage / Networking</span>
+          <span class="layer-copy">底层算力决定吞吐、延迟、可用性与单位成本。</span>
+        </div>
+      </div>
+      <div class="map-caption">
+        <p><strong>行业坐标：</strong>Generative AI Infrastructure → Inference / Model Serving → Generative Media specialization。</p>
+        <p class="fine">图中公司用于说明市场层级与相邻类别，并不表示每一方都与 fal 存在直接商业或供应关系。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="customer-title">
+      <div class="section-head">
+        <div class="section-no">03 / Customer &amp; money</div>
+        <div>
+          <h3 id="customer-title">客户买的不是模型，<br>是“上线速度”。</h3>
+          <p class="section-intro">从三行代码的 Model API，到自有模型的 Serverless，再到专用 Compute，fal 覆盖了从原型到生产的不同技术深度。<sup><a href="#s1">1</a></sup></p>
+        </div>
+      </div>
+
+      <div class="audience-grid">
+        <article class="audience-hero">
+          <span class="tiny">Target customer / center of gravity</span>
+          <span class="big">Developers<br>&amp; product<br>teams</span>
+          <p>尤其是正在把 image / video / audio generation 做进产品，并且不想自己维护完整 GPU serving stack 的团队。</p>
+        </article>
+
+        <div class="business">
+          <article class="business-card">
+            <span class="index">A</span>
+            <h4>Model APIs</h4>
+            <p><b>预付 credits，按成功输出计费。</b>单位因模型而异：每张图、每百万像素、每秒视频或每次请求。<sup><a href="#s2">2</a></sup></p>
+          </article>
+          <article class="business-card">
+            <span class="index">B</span>
+            <h4>Serverless</h4>
+            <p><b>运行自有或定制模型。</b>以实际执行算力计费，自动扩缩容，把 MLOps 与 GPU 调度交给 fal。<sup><a href="#s1">1</a></sup></p>
+          </article>
+          <article class="business-card">
+            <span class="index">C</span>
+            <h4>Compute + Enterprise</h4>
+            <p><b>专用 GPU 按小时计费。</b>更大用量可获得定制 endpoint 价格与 volume discount。<sup><a href="#s2">2</a></sup></p>
+          </article>
+          <div class="business-note"><b>阶段判断：</b>最后一轮已确认融资是 Series D；官方在该轮称团队 70 人并计划扩大工程、产品与 go-to-market。TechCrunch 报道该轮估值 $4.5B。<sup><a href="#s3">3</a></sup><sup><a href="#s4">4</a></sup></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="reasons-title">
+      <div class="section-head">
+        <div class="section-no">04 / Why people choose it</div>
+        <div>
+          <h3 id="reasons-title">更快接入，<br>更快生成，更快上线。</h3>
+          <p class="section-intro">下面是产品能力与外部使用反馈交叉后，最稳定的四个选择理由。</p>
+        </div>
+      </div>
+
+      <div class="reasons">
+        <article class="reason">
+          <span class="glyph">01 —</span>
+          <h4>Inference speed</h4>
+          <p>fal 把低延迟作为核心产品承诺；独立开发者也报告，在小型项目里其延迟低于多数 Stable Diffusion hosting 体验。<sup><a href="#s5">5</a></sup></p>
+        </article>
+        <article class="reason">
+          <span class="glyph">02 —</span>
+          <h4>One API, many models</h4>
+          <p>官方文档列出 1,000+ endpoints，覆盖 image、video、audio、music、speech、3D 与 realtime；开发者不必为每家模型实验室重做整套集成。<sup><a href="#s1">1</a></sup></p>
+        </article>
+        <article class="reason">
+          <span class="glyph">03 —</span>
+          <h4>Production without GPU ops</h4>
+          <p>托管队列、autoscaling、retries、日志、usage tracking 与 metrics，缩短从 playground 到生产 endpoint 的路径。<sup><a href="#s1">1</a></sup></p>
+        </article>
+        <article class="reason">
+          <span class="glyph">04 —</span>
+          <h4>Bring your own model</h4>
+          <p>不只调用预训练模型；团队也能部署 proprietary pipeline、fine-tuned variant 或自有 weights，在同一基础设施上运行。<sup><a href="#s1">1</a></sup></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="perspective-title">
+      <div class="section-head">
+        <div class="section-no">05 / Outside perspective</div>
+        <div>
+          <h3 id="perspective-title">开发者喜欢速度，<br>也会盯紧成本。</h3>
+          <p class="section-intro">以下是可追溯的第三方讨论摘要。社区帖子属于个案与主观体验，不等同于系统性结论。</p>
+        </div>
+      </div>
+
+      <div class="perspective-grid">
+        <article class="perspective">
+          <div class="perspective-kicker"><span>Praise / community</span><span>↑ Signal</span></div>
+          <blockquote>“它确实快。”<br>这是最一致的外部印象。</blockquote>
+          <ul>
+            <li>一位开发者把 fal 用在 meme generator 中，称延迟明显低于多数 SD hosts。<sup><a href="#s5">5</a></sup></li>
+            <li>创作者倾向把它当作 API backend，而不是最终创作软件；这正好匹配 Developer-first 定位。<sup><a href="#s6">6</a></sup></li>
+            <li>fal 官网展示的 Canva、Perplexity 与 Poe 客户证言，反复提到模型覆盖、灵活性与推理优化。<sup><a href="#s7">7</a></sup></li>
+          </ul>
+          <p class="source-note">前两项来自独立社区讨论；第三项为客户证言，但由 fal 官网选编。</p>
+        </article>
+
+        <article class="perspective concern">
+          <div class="perspective-kicker"><span>Concerns / community</span><span>↓ Watch</span></div>
+          <blockquote>API 很强，<br>但成本与使用边界要更清楚。</blockquote>
+          <ul>
+            <li>直接网页体验被部分创作者认为“不够友好”；产品更适合嵌入其他应用。<sup><a href="#s6">6</a></sup></li>
+            <li>价格随模型和计费单位变化；个别用户称某些模型在 Replicate 更便宜，因此需要逐 endpoint 比较。<sup><a href="#s6">6</a></sup></li>
+            <li>一则 n8n 自动化个案报告 credits 用完后出现负余额和意外账单；重试、并发与预算保护值得主动设置。<sup><a href="#s8">8</a></sup></li>
+          </ul>
+          <p class="source-note">账单条目是单一用户报告，无法证明普遍性；官方当前文档称 Model API 采用 prepaid credits，并提供 usage analytics。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="remember-title">
+      <div class="section-head">
+        <div class="section-no">06 / Remember this</div>
+        <div><h3 id="remember-title">三件事，就够了。</h3></div>
+      </div>
+
+      <div class="remember-list">
+        <article class="remember">
+          <h4>fal 是推理层，<br>不是单一模型公司。</h4>
+          <p>它的核心价值是让许多生成式媒体模型更容易被调用、部署和扩展。</p>
+        </article>
+        <article class="remember">
+          <h4>Developers<br>是重心。</h4>
+          <p>最终用户可能是创作者，但 fal 的直接产品语言是 API、SDK、serverless、compute 与 observability。</p>
+        </article>
+        <article class="remember">
+          <h4>胜负手是<br>speed + catalog + DX。</h4>
+          <p>模型越来越同质化时，谁能更快提供新模型、更低延迟与更顺滑的集成，谁就更有平台价值。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="explore">
+        <h3>Keep<br>Exploring →</h3>
+        <nav class="explore-links" aria-label="Official fal links">
+          <a href="https://fal.ai/" target="_blank" rel="noopener"><span>Website</span><span>↗</span></a>
+          <a href="https://fal.ai/docs/documentation" target="_blank" rel="noopener"><span>Docs</span><span>↗</span></a>
+          <a href="https://www.linkedin.com/company/features-and-labels/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+          <a href="https://x.com/fal" target="_blank" rel="noopener"><span>X / @fal</span><span>↗</span></a>
+          <a href="https://github.com/fal-ai" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a>
+          <a href="https://fal.ai/pricing" target="_blank" rel="noopener"><span>Pricing</span><span>↗</span></a>
+        </nav>
+      </div>
+
+      <div class="sources">
+        <h4>Sources &amp; reading notes</h4>
+        <ol>
+          <li id="s1"><a href="https://fal.ai/docs/documentation" target="_blank" rel="noopener">fal Documentation</a> — product scope, endpoints, Serverless and Compute.</li>
+          <li id="s2"><a href="https://fal.ai/docs/documentation/model-apis/pricing" target="_blank" rel="noopener">fal Pricing Documentation</a> — credits, billing units and enterprise discounts.</li>
+          <li id="s3"><a href="https://blog.fal.ai/our-series-d-scaling-fal/" target="_blank" rel="noopener">fal Series D announcement</a> — $140M round, investors and team size.</li>
+          <li id="s4"><a href="https://techcrunch.com/2025/12/09/fal-nabs-140m-in-fresh-funding-led-by-sequoia-tripling-valuation-to-4-5b/" target="_blank" rel="noopener">TechCrunch</a> — reported $4.5B valuation and company context.</li>
+          <li id="s5"><a href="https://www.reddit.com/r/SaaS/comments/1nt747k/best_midjourney_api_alternatives_in_2025_for_free/" target="_blank" rel="noopener">Reddit / r/SaaS</a> — developer latency anecdote.</li>
+          <li id="s6"><a href="https://www.reddit.com/r/generativeAI/comments/1syivit/another_vibe_coded_ui_for_falai_focused_on_fast/" target="_blank" rel="noopener">Reddit / r/generativeAI</a> — UI, API-backend fit and price comparison discussion.</li>
+          <li id="s7"><a href="https://fal.ai/" target="_blank" rel="noopener">fal homepage</a> — named customer testimonials; treated as first-party selection.</li>
+          <li id="s8"><a href="https://www.reddit.com/r/n8n/comments/1lpu7wd/unexpected_110_bill_from_falai_after_10_credit_am/" target="_blank" rel="noopener">Reddit / r/n8n</a> — individual billing incident report.</li>
+        </ol>
+        <div class="colophon">
+          <span>Research cut-off · 14 Aug 2026</span>
+          <span>Emerging Tech Company Analyst · Soft Editorial</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
