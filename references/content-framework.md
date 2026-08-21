@@ -3,12 +3,14 @@
 ## Contents
 
 1. Editorial principles
-2. Evidence hierarchy
-3. Research checklist
-4. Adaptive industry map
-5. Section recipes
-6. Third-party perspective rules
-7. Unsupported and unstable information
+2. Beginner-first analogy
+3. Progressive depth and repetition budget
+4. Evidence hierarchy
+5. Research checklist
+6. Adaptive industry map
+7. Section recipes
+8. Third-party perspective rules
+9. Unsupported and unstable information
 
 ## 1. Editorial principles
 
@@ -18,12 +20,21 @@ The product promise is: **Understand an emerging tech company in three minutes.*
 
 Optimize for accurate mental models, not completeness. A fact earns space only when it changes the reader's understanding of the company, market position, customer, economics, momentum, or risk.
 
+### Analogy before taxonomy
+
+Default to a smart newcomer. Give the reader a familiar situation before presenting industry categories or acronyms. A strong analogy explains a system of relationships: who is doing something, what can go wrong, what the company sees or changes, and what becomes possible afterward.
+
+Do not disguise definitions as analogies. `QoE means viewing quality`, `an SDK is a software kit`, or `the product is like an analytics brain` may translate words but do not create a mental model.
+
+Use one central analogy. After the scene is clear, map only the essential parts to reality and mention where the analogy stops being accurate. Introduce unavoidable jargon afterward with a short concrete phrase tied back to the scene.
+
 ### One section, one lesson
 
 Each section must answer one major question:
 
 | Section | One lesson |
 |---|---|
+| Start Here | What familiar situation makes its role intuitive? |
 | Hero | What is it? |
 | Where It Fits | Where is it in the industry? |
 | Customer & Money | Who pays, and how? |
@@ -39,7 +50,61 @@ Prefer a precise category such as `AI Coding IDE`, `Inference Platform`, `Vector
 
 When the company spans layers, identify its center of gravity and show adjacent expansion as secondary.
 
-## 2. Evidence hierarchy
+## 2. Beginner-first analogy
+
+Build the analogy from researched product mechanics, not from brand language.
+
+Include:
+
+- a familiar setting;
+- recognizable actors;
+- one concrete problem or tension;
+- the company's functional role;
+- the result when that role works;
+- a two-to-four-item mapping back to reality.
+
+Prefer scenes such as a control room, marketplace, kitchen, logistics hub, translator, utility network, or workshop only when their relationships genuinely match the company. Avoid clichés that imply capabilities the product does not have.
+
+Keep the opening analogy short. Its purpose is to make the next section easier, not to become a separate essay.
+
+## 3. Progressive depth and repetition budget
+
+### Three useful stopping points
+
+Design the reading experience so each layer is complete enough to stop at:
+
+| Reading depth | Reader should leave knowing | Default content |
+|---|---|---|
+| 30 seconds | What role the company plays and why it matters | Analogy, reality mapping, core conclusion |
+| Two minutes | Where it sits and how the business works | Industry position, customer, buyer, business model, stage, two or three reasons to choose it |
+| Final layer | How to judge it | Outside signals, key risk or unknown, three memory cues |
+
+For Chinese Stage 1 output, target roughly 800–1,200 characters before sources. This is a compression target, not permission to omit a caveat that changes the conclusion.
+
+### Repetition budget
+
+Every core idea gets one full explanation. It may return once, in one short sentence, only to aid memory.
+
+Common duplication to remove:
+
+- the analogy mapping and Hero both explaining the complete product;
+- the map introduction and core judgment both restating the company's industry layer;
+- Why People Choose It and Outside Perspective repeating the same praise without adding evidence;
+- Remember This reproducing whole paragraphs from earlier sections.
+
+If two passages produce the same reader takeaway, keep the one in the section that owns the question. Move useful proof into that passage, then delete the duplicate.
+
+### Compression pass
+
+Before delivering either stage:
+
+1. Write the one question each paragraph or card answers.
+2. Merge or delete items with the same answer.
+3. Remove facts that do not change the mental model, business understanding, or judgment.
+4. Reduce secondary evidence to a citation or omit it.
+5. Keep only four to six strongest links in the visible source snapshot.
+
+## 4. Evidence hierarchy
 
 Use the strongest available source for each claim:
 
@@ -54,10 +119,11 @@ Do not flatten these into equivalent evidence. Label named customer testimony as
 
 For performance numbers, do not repeat a company benchmark as an independent fact. Write `the company claims` unless a credible external benchmark verifies it.
 
-## 3. Research checklist
+## 5. Research checklist
 
 Gather only what is relevant:
 
+- A defensible familiar-world analogy and its limitation.
 - One-sentence product explanation.
 - Precise industry category and layer.
 - Primary audience and secondary buyer/user distinctions.
@@ -74,7 +140,7 @@ Gather only what is relevant:
 
 Possible omission is a valid result. Do not manufacture symmetry between praise and concerns or between company fields.
 
-## 4. Adaptive industry map
+## 6. Adaptive industry map
 
 Choose the map based on the explanation problem.
 
@@ -109,7 +175,15 @@ Use only defensible axes such as:
 
 Avoid vague axes like `better`, `innovative`, or `AI-native` unless operationally defined.
 
-## 5. Section recipes
+## 7. Section recipes
+
+### Start Here
+
+Open with the approved analogy. Let the scene work before naming the industry category. Follow it with a compact `In the real product...` mapping, then move into the Hero.
+
+Do not start with a glossary, acronym expansion, market category, or a wall of tags.
+
+Together with the core conclusion, this section should provide a complete 30-second understanding. Do not explain the whole product again in the Hero.
 
 ### Hero
 
@@ -123,6 +197,8 @@ Include:
 - compact business model and company stage labels when supported.
 
 The hero must not become a metrics dashboard.
+
+Use compact identity labels here. If the analogy already explained how the product works, the Hero should name and position it rather than repeat that explanation.
 
 ### Customer & Money
 
@@ -168,9 +244,9 @@ Write exactly three conclusions:
 2. Audience or customer.
 3. Differentiation, strategic bet, or key risk.
 
-Each conclusion should be understandable without the rest of the page.
+Each conclusion should be understandable without the rest of the page, but short enough to function as recall rather than a repeated explanation.
 
-## 6. Third-party perspective rules
+## 8. Third-party perspective rules
 
 Strong praise signals:
 
@@ -196,7 +272,7 @@ Weak signals to exclude:
 - unverified viral claims;
 - a lone complaint presented as a company-wide pattern.
 
-## 7. Unsupported and unstable information
+## 9. Unsupported and unstable information
 
 Treat these as unstable and verify them close to delivery:
 
